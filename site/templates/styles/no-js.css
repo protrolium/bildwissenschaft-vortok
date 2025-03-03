@@ -1,0 +1,44 @@
+.js-only {
+    display: none;
+}
+
+html.js .js-only {
+    display: block;
+}
+
+a {
+    color: #000;
+    text-decoration: underline;
+}
+
+#closeBtn {
+    display: none;
+}
+
+#mobileNav {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+#desktopNav {
+    display: flex;
+}
+
+#archive, #site-wide-items, #tag {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+#menu {
+    display: none;
+}
+
+.uk-navbar-nav > li > a {
+    font-size: 1em;
+}
+
+#footer-row {
+    display: flex;
+    flex-wrap: wrap;
+}
+

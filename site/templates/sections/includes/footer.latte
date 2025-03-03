@@ -1,0 +1,53 @@
+<footer class="uk-height-auto" uk-scrollspy="cls: uk-animation-fade; delay: 250; repeat: false">
+
+    {* mobile / desktop social row *}
+    <div id="footer-row" class="uk-child-width-expand@s uk-grid-collapse" uk-grid>
+        <div class="uk-padding uk-padding-remove-bottom uk-flex uk-flex-between uk-flex-middle">
+            {foreach $pages->get('name=social-networks')->footer as $social}
+                <div style="width: 2.5em; text-align:center;">
+                    {if $social->title == "xxiivv"}
+                        <a class="uk-icon noHover" href="{$social->hyperlink}" aria-label="{$social->title}" target="_blank" alt="XXIIVV webring" rel="noopener">
+                            {$social->markup|noescape}
+                        </a>
+                    {else}
+                        <a class="uk-icon noHover" href="{$social->hyperlink}" aria-label="{$social->title}" target="_blank">
+                            {$social->markup|noescape}
+                        </a>
+                    {/if}
+                </div>
+            {/foreach}
+        </div>
+    
+        <div class="uk-padding uk-padding-remove-bottom uk-flex uk-flex-right@m uk-flex-center uk-flex-middle">
+            
+            {* mobile *}
+            <p class="uk-hidden@s" style="font-size: 0.7em; text-align: center;">laskfar vortok © {$datetime->date('Y')} 
+                <a class="noExternalSVG" href="https://creativecommons.org/licenses/by-nc-sa/4.0/" alt="" target="_blank">
+                    CC: BY-NC-SA 4.0
+                </a>
+            <br>
+                logo designed by <a class="noExternalSVG" href="https://e-g-h.me/Home" alt="" target="_blank">eg huang</a>
+            <br>
+            <span class="uk-text-muted" style="font-size: 0.4em;">
+                time is tyrannical • time is mechanical • super-organical • extra-fantastical
+            </span>
+            </p>
+            
+            {* desktop *}
+            <p class="uk-text-small uk-visible@s uk-padding-small" style="text-align: end;">laskfar vortok © {$datetime->date('Y')} 
+                <a class="noExternalSVG" href="https://creativecommons.org/licenses/by-nc-sa/4.0/" alt="" target="_blank">
+                    CC: BY-NC-SA 4.0
+                </a>
+            <br>
+                logo designed by <a class="noExternalSVG" href="https://e-g-h.me/Home" alt="" target="_blank">eg huang</a>
+            <br>
+            <span class="uk-text-muted" style="font-size: 0.4em; position: relative; bottom: 5px;">
+                time is tyrannical • time is mechanical • super-organical • extra-fantastical
+            </span>
+            </p>
+        </div>
+
+    
+    </div>
+    
+</footer>

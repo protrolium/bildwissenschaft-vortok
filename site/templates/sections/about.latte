@@ -1,0 +1,37 @@
+<section uk-height-viewport="expand: true" uk-scrollspy="cls: uk-animation-fade; target: > div; delay: 400; repeat: false;">
+    <div class="uk-padding-large uk-padding-remove-bottom">
+
+        {foreach $page->repeater_matrix as $item}
+        
+            <section uk-scrollspy="cls:uk-animation-fade; target: > div; delay: 350; repeat: false;">
+                {if $item->type == "bodycopy"}
+                    <div class="uk-text-small">
+                        {$item->body|noescape}
+                    </div>
+                {/if}
+            </section>
+
+        {/foreach}
+
+    </div>
+    <div class="uk-padding-large uk-padding-remove-top uk-padding-remove-bottom">
+        <div style="font-size:0.7em;">
+            
+                site built using 
+            
+            <span style="display: inline-block; width:15px;">
+                {$pages->get("name=processwire, template=image")->markup|noescape}
+            </span>
+
+            <a href="https://processwire.com/">ProcessWire</a> 
+            
+            {* Get the most recently modified page *}
+            {var $latestPage = $pages->find("sort=-modified, limit=1")->first()}
+            
+            <br>
+            
+                last updated: {date('Y F j H:i:s', $latestPage->modified)}
+
+        </div>
+    </div>
+</section>

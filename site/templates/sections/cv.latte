@@ -1,0 +1,31 @@
+<section>
+    <div class="uk-height-viewport uk-padding-large uk-padding-remove-top">
+        {foreach $page->repeater_matrix_cv_table as $item}
+            {if $item->type == "header"}
+                <div class="uk-margin-large-top">
+                    <th class="noExternalSVG helvetica-neue cv">{$item->body|noescape}</th>
+                </div>
+            {/if}
+
+            {if $item->type == "cv_table_item"}
+                {foreach $item->cv_table as $table}
+                    <table class="uk-table uk-table-divider uk-table-responsive uk-margin-remove-top helvetica-neue">
+                        <tbody>
+                            <tr class="uk-table-expand">
+                                <td class="uk-width-small uk-padding-small uk-padding-remove-left uk-padding-remove-top">{$table->date|date: 'Y'}</td>
+                                <td class="uk-width-large uk-padding-remove-top uk-padding-remove-left">
+                                    {if $table??->project_url}
+                                        <a class="noExternalSVG cv" href="{$table->project_url}" alt="">{$table->project_title|noescape}</a>
+                                    {else}
+                                        <a class="cv" href="{$table->project_page->url}" alt="">{$table->project_title|noescape}</a>
+                                    {/if}
+                                </td>
+                                <td class="uk-padding uk-padding-remove-left uk-padding-remove-top uk-margin-bottom">{$table->location|noescape}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                {/foreach}
+            {/if}
+        {/foreach}
+    </div>  
+</section>

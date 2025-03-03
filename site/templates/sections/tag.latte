@@ -1,0 +1,91 @@
+<section class="uk-height-viewport">
+
+    <div>
+        <div class="uk-padding uk-animation-fade">
+            <h1 class="uk-text-large" style="line-height:1.2em;">{$page->title|upper|noescape}</h1>
+        </div>
+    </div>
+
+    <div 
+        id="tag"
+        class="uk-height-1-1 uk-child-width-1-5@m uk-grid-small uk-grid-collapse" 
+        uk-grid="masonry: false;" 
+        uk-scrollspy="cls: uk-animation-fade; target: .uk-card; delay: 350; repeat: false;">
+        
+        {foreach $page->references("sort=-post-date") as $item}
+            <div class="uk-card">
+                
+                {* featured image *}    
+                <a href="{$item->url}" alt="">
+                    <div 
+                        class="uk-card-media-top uk-cover-container uk-background-cover"
+                        style="background-image: url('{$item->featured_image->first->url}');">
+                            <canvas width="1200" height="1200"></canvas>
+                    </div>
+
+                    <!-- Fallback for non-JS browsers -->
+                    <noscript>
+                        <style>
+                            .noscript-featured-image {
+                            width: 300px;      /* Set your desired width */
+                            height: 200px;     /* Set your desired height */
+                            object-fit: cover; /* This maintains aspect ratio while covering the area */
+                            display: block;    /* Removes extra space below the image */
+                            }
+                        </style>
+
+                        <img class="noscript-featured-image" src="{$item->featured_image->first->url}" alt="">
+                    </noscript>
+                </a>
+
+                <div class="uk-overlay uk-padding-small">
+                
+                    {* title *}
+                    <a class="noUnderline" href="{$item->url}" alt="">
+                        <div class="uk-padding-small uk-padding-remove-bottom uk-padding-remove-left uk-padding-remove-right">
+                            <span class="uk-text-secondary" style="word-wrap: break-word;">
+                                {$item->title|upper|noescape}
+                            </span>
+                        </div>
+                    </a>
+
+                    {* date *}
+                    <div class="uk-padding-small uk-padding-remove-top uk-padding-remove-bottom uk-padding-remove-left uk-text-muted">
+                        <span class="text-light hover-icon" uk-icon="icon: clock; ratio: 0.7"></span> 
+                        <span style="font-size: 0.8em;">{$item->post_date}</span>
+                    </div>
+
+                    <div class="uk-padding-small uk-padding-remove-top uk-padding-remove-bottom uk-padding-remove-left">
+                        {foreach $item->categories as $tag}
+                            <span uk-icon="icon: tag; ratio: 0.5"></span>
+                            <a class="uk-text-secondary" href="{$tag->url}" alt=""><span style="font-size: 0.5em;">{$tag->title}</span></a>    
+                        {/foreach}
+                    </div>
+
+
+                    {* body area *}
+                    <!-- <div class="uk-padding-small">
+                        
+                        {* body truncated text *}
+                        <div class="uk-text-muted uk-text-small noExternalSVG">
+                            {foreach $item->repeater_matrix->find("type=bodycopy") as $body}
+                                {if $iterator->first}
+                                    <p style="font-size: 0.75em;">{$body->body|stripHtml|truncate:125}</p>
+                                {/if}
+                            {/foreach}
+                        </div>
+                    </div> -->
+                    
+                    {* categories *}
+                    {* <div class="uk-padding-small uk-padding-remove-top">
+                        {foreach $item->categories as $tag}
+                            <span uk-icon="icon: hashtag; ratio: 1"></span>
+                            <a class="uk-text-emphasis uk-button uk-button-text uk-text-small">{$tag->title}</a>
+                        {/foreach}
+                    </div> *}
+                </div>
+            </div>
+            
+        {/foreach}
+    </div>
+</section>
