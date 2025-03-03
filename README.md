@@ -1,4 +1,4 @@
-<img src="https://teachingmachine.tv/site/assets/files/1036/tm-logo-large.svg" />
+<img style="width:100px;" src="https://bildwissenschaft.vortok.info/site/assets/files/1618/laskfar_vortok.png.webp" />
 
 # Laskfar Vortok • Bildwissenschaft ProcessWire
 
