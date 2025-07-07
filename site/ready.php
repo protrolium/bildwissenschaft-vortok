@@ -33,6 +33,6 @@ if($page->template != 'admin') {
   });
 }
 
-  // access init method from within the custom page class
-  // $pages->get("template=tag")->init();
-  // $pages->get("template=default-page")->init();
+// access init method from within the custom page class
+// $pages->get("template=tag")->init();
+// $pages->get("template=default-page")->init();
