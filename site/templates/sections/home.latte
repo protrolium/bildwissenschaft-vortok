@@ -4,23 +4,32 @@
     >
 
     {foreach $page->featured_projects as $item}
-
+        
         <div>
-            {foreach $item->repeater_matrix as $element}
-                {if $element->type == "single_image"}
-                    <div class="uk-flex uk-flex-center uk-margin-large-top uk-margin-large-bottom">
-                        <a href="https://evar-records.bandcamp.com/album/erbsat-esrhosc" target="_blank" alt="">
-                            <img src="{$element->image->url}" alt="{$element->image->title}" uk-img>
-                        </a>
-                    </div>
-                {/if}
-
-            {/foreach}
+            <div class="uk-flex uk-flex-wrap uk-flex-center uk-flex-middle uk-margin-large-bottom">
+                {foreach $item->repeater_matrix as $element}
+                    {if $element->type == "single_image"}
+                        <div class="uk-width-1-1 uk-width-1-2@m uk-padding-small">
+                            <a href="https://evar-records.bandcamp.com/album/erbsat-esrhosc" target="_blank">
+                                <img src="{$element->image->url}" alt="{$element->image->title}" uk-img>
+                            </a>
+                        </div>
+                    {/if}
+                {/foreach}
+            </div>
 
             <div class="uk-flex uk-flex-column uk-flex-middle">
-                <h1>
-                    LASKFAR VORTOK • ERBSAT ESRHOSC EP
-                </h1>
+                <p class="uk-heading-medium uk-visible@m" style="text-align:center;">
+                    LASKFAR VORTOK
+                    <br>
+                    ERBSAT ESRHOSC EP
+                </p>
+
+                <p class="uk-text-large uk-hidden@m" style="text-align:center;">
+                    LASKFAR VORTOK
+                    <br>
+                    ERBSAT ESRHOSC EP
+                </p>
                 
                 {* mobile button *}
                 <div class="uk-hidden@m">
@@ -48,21 +57,21 @@
 
                 <a href="{$pages->get('erbsat-esrhosc')->url}" class="uk-margin-small-top">
                     <button class="uk-button uk-button-large uk-button-secondary" type="button">
-                        Release Page
+                        Release Info
                     </button>
                 </a>
 
             </div>
 
-            <div class="uk-flex uk-flex-center">
+            <div class="uk-flex">
                 
-                <div class="uk-width-1-2@m" style="width:60%; margin:auto;">
+                <div class="uk-width-1-2@m" style="width:45%;">
                     <a href="{$pages->get('evar-logo-v02')->hyperlink}" aria-label="Evar Records" target="_blank">
                         {$pages->get('name=evar-logo-v02, template=image')->markup|noescape}
                     </a>
                 </div>
 
-                <div class="uk-width-1-2@m" style="width:40%; margin:auto;">
+                <div class="uk-width-1-2@m" style="width:25%; margin:auto;">
                     <a href="{$pages->get('teaching-machine-logo')->hyperlink}" aria-label="The Teaching Machine" target="_blank">
                         {$pages->get('name=teaching-machine-logo, template=image')->markup|noescape}
                     </a>
@@ -70,10 +79,14 @@
 
             </div>
 
-        
-            <div>
-                {$rockfrontend->render("/sections/includes/gallery.latte", $item)}
+            <div class="uk-width-1-1">
+                <div class="video-container uk-margin-top">
+                    {$pages->get('name=erbsat-esrhosc')->repeater_matrix->get('type=video_embed_repeater')->video_embed|noescape}
+                </div>
             </div>
+            {* <div>
+                {$rockfrontend->render("/sections/includes/gallery.latte", $item)}
+            </div> *}
         
         </div>
         
